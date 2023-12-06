@@ -1,0 +1,49 @@
+root:
+  fieldAggregations:
+    - id: GLOBAL_ID_1
+      fieldTransformationDefinitions:
+        - dataFieldId: ID_1
+          transformationDefinitionType: TransformationDefinitionField
+        - dataFieldId: ID_2
+          transformation:
+            defaultValue: 0
+            transformationType: TransformationValueOrDefault
+          transformationDefinitionType: TransformationDefinitionField
+    - id: GLOBAL_ID_2
+      fieldTransformationDefinitions:
+        - dataFieldId: ID_1
+          transformation:
+            maxThreshold: 3.5
+            minThreshold: 1
+            transformationType: TransformationLimitingAtThresholds
+          transformationDefinitionType: TransformationDefinitionField
+        - dataFieldId: ID_2
+          transformation:
+            maxThreshold: 3.5
+            minThreshold: 1
+            transformationType: TransformationLimitingAtThresholds
+          transformationDefinitionType: TransformationDefinitionField
+    - id: GLOBAL_ID_3
+      fieldTransformationDefinitions:
+        - dataFieldId: ID_1
+          transformationDefinitionType: TransformationDefinitionField
+        - fieldTransformationDefinitions:
+            - dataFieldId: ID_2
+              transformationDefinitionType: TransformationDefinitionField
+            - dataFieldId: ID_3
+              transformation:
+                constant: 0.5
+                transformationType: TransformationMultiplyingByConstant
+              transformationDefinitionType: TransformationDefinitionField
+          transformationDefinitionType: TransformationDefinitionSummingUp
+        - dataFieldId: ID_4
+          transformationDefinitionType: TransformationDefinitionField
+        - fieldTransformationDefinitions:
+            - dataFieldId: ID_5
+              transformationDefinitionType: TransformationDefinitionField
+            - dataFieldId: ID_6
+              transformation:
+                constant: 0.5
+                transformationType: TransformationMultiplyingByConstant
+              transformationDefinitionType: TransformationDefinitionField
+          transformationDefinitionType: TransformationDefinitionSummingUp
